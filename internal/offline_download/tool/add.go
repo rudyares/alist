@@ -77,7 +77,7 @@ func AddURL(ctx context.Context, args *AddURLArgs) (tache.TaskWithInfo, error) {
 		// 防止将下载好的文件删除
 		deletePolicy = DeleteNever
 	}
-	
+
 	t := &DownloadTask{
 		Url:          args.URL,
 		DstDirPath:   args.DstDirPath,

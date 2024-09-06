@@ -1,6 +1,22 @@
-version: '3.3'
+#version: '3.3'
 services:
+  #  alist:
+  #    restart: always
+  #    volumes:
+  #      - '/etc/alist:/opt/alist/data'
+  #    ports:
+  #      - '5244:5244'
+  #      - '5245:5245'
+  #    environment:
+  #      - PUID=0
+  #      - PGID=0
+  #      - UMASK=022
+  #      - TZ=UTC
+  #    container_name: alist
+  #    image: 'xhofe/alist:latest'
   alist:
+    image: 'ghcr.io/rudyares/alist:v0.0.1-20240906220337'
+    container_name: alist
     restart: always
     volumes:
       - '/etc/alist:/opt/alist/data'
@@ -12,5 +28,7 @@ services:
       - PGID=0
       - UMASK=022
       - TZ=UTC
-    container_name: alist
-    image: 'xhofe/alist:latest'
+    command:
+      - /opt/alist/alist
+      - server
+      - --no-prefix

@@ -174,5 +174,3 @@ func (d *Seafile) decryptLibrary(repo *LibraryInfo) (err error) {
 	repo.decryptedSuccess = true
 	return nil
 }
-
-
