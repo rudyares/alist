@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM ghcr.io/rudyares/alpine:edge
 
 ARG INSTALL_FFMPEG=false
 

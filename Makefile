@@ -32,10 +32,10 @@ mod-tidy: ## Run go mod tidy
 build: fmt mod-tidy ## build binary
 	@echo "> Build binary ..."
 	@GOOS=linux GOARCH=amd64 CGO_ENABLED=1 CC=x86_64-unknown-linux-gnu-gcc go build -o ./bin/alist-linux-amd64 -ldflags=${extldflags} -tags=jsoniter .
-	@GOOS=darwin GOARCH=arm64 go build -o ./bin/alist-darwin-arm64 -ldflags=${ldflags} -tags=jsoniter .
+#	@GOOS=darwin GOARCH=arm64 go build -o ./bin/alist-darwin-arm64 -ldflags=${ldflags} -tags=jsoniter .
 	@echo "(^_^) Build binary successfully"
 
-.PHONY: build-image-unidas
+.PHONY: build-docker-image
 build-docker-image: build # build docker image
 	@echo "> Build docker image ..."
 	@docker build -t ${IMAGE} -f ./self.dockerfile . --platform=linux/amd64
