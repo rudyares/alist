@@ -1,8 +1,7 @@
 # Current datetime
-TIMESTAMP ?= $(shell date +%Y%m%d%H%M%S)
 IMAGE_NAME ?= ghcr.io/rudyares/alist
-IMAGE_TAG ?= v0.0.1
-IMAGE = $(IMAGE_NAME):$(IMAGE_TAG)-$(TIMESTAMP)
+IMAGE_TAG ?= v1.0.0
+IMAGE = $(IMAGE_NAME):$(IMAGE_TAG)
 
 goVersion = $(shell go version | sed 's/go version //')
 gitCommit=$(shell git log --pretty=format:"%h" -1)
@@ -40,6 +39,12 @@ build-docker-image: build # build docker image
 	@echo "> Build docker image ..."
 	@docker build -t ${IMAGE} -f ./self.dockerfile . --platform=linux/amd64
 	@echo "(^_^) Build docker image successfully"
+
+.PHONY: push-docker-image
+push-docker-image: build-docker-image # push docker image
+	@echo "> Push docker image ..."
+	@docker push ${IMAGE}
+	@echo "(^_^) Push docker image successfully"
 
 .PHONY: fetch-web
 fetch-web:  ## fetch web packages

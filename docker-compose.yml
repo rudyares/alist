@@ -15,7 +15,7 @@ services:
   #    container_name: alist
   #    image: 'xhofe/alist:latest'
   alist:
-    image: 'ghcr.io/rudyares/alist:v0.0.1-20240917023537'
+    image: 'ghcr.io/rudyares/alist:v1.0.0'
     container_name: alist
     restart: always
     volumes:
